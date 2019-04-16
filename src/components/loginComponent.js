@@ -1,62 +1,54 @@
 import React, { Component } from 'react';
-import { signupRequest }  from '../redux/actions';
-import { connect } from 'react-redux';
-
-class AddUser extends Component {
-    
+import {loginRequest} from '../redux/actions';
+import {connect} from  'react-redux';
+import {Link} from 'react-router-dom';
+class LoginComponent extends Component {
     submit = (data)=>{
         data.preventDefault();
-        let formVal = {t1:this.refs.t1.value,t2:this.refs.t2.value,t3:this.refs.t3.value};        
-        this.props.signupRequest(formVal);
+        let loginFormVal = {user:this.refs.user.value,passwd:this.refs.passwd.value};        
+        this.props.loginRequest(loginFormVal);
     }
 
-    render() {         
-        return (
+    render() { 
+        return ( 
             <div className = "form-group">
                 <form onSubmit = {this.submit}>
                     <h3>
-                        Signup
+                        Login   
                     </h3>
                     <input 
                         type= "text" 
                         name = "text1" 
-                        ref ="t1"
+                        ref ="user"
                         className = "form-control"
                         required
                     />
                     <input 
                         type = "password"  
                         name = "text2" 
-                        ref ="t2"
+                        ref ="passwd"
                         className = "form-control"
                         required
-                    />
-                    <input 
-                        type = "text"  
-                        name = "text3" 
-                        ref ="t3"
-                        className = "form-control"
-                        required
-                    />
-                    <input type ="submit" className ="btn btn-primary" value = "submit" />
+                    />                    
+                    <input type ="submit" className = "btn btn-success" value = "Login" />
                 </form>
                 <div>
-                    <h3>{this.props.state.signup.message}</h3>
+                    <h3 className={(this.props.state.login.isSuccess) ? 'alert alert-success' :'alert alert-danger'}>{this.props.state.login.message}</h3>
+                    
                 </div>
             </div>
-        );
+         );
     }
 }
- 
 const mapStateToProps = state => ({
     state: state
   });
   
   const mapDispatchToProps = dispatch => ({
-    signupRequest: data => dispatch(signupRequest(data))
+    loginRequest: data => dispatch(loginRequest(data))
   });
   
   export default connect(
     mapStateToProps,
     mapDispatchToProps
-  )(AddUser);
+  )(LoginComponent);

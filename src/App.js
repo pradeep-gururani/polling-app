@@ -1,16 +1,43 @@
 import React, { Component } from 'react';
 import Auth from './containers/auth';
 import './App.css';
-
+import {connect} from 'react-redux';
+import { BrowserRouter as Router} from "react-router-dom";
+import {Switch,Route} from 'react-router-dom';
+import User from './components/User';
 class App extends Component {
   render() {
-    console.log('props-->-->', this.props);
+    console.log('props-->in-->app-->', this.props.state);
+
     return (
-      <div className="App"> 
-        <Auth />
+      <div className="App">             
+        <Router>
+          <Switch>
+              <Route exact path = "/User" component = {User}></Route>    
+                                 
+          </Switch>
+          {(this.props.state.login.data.role === 'user')
+          ?(<User />)
+          :(<Auth />)
+          }
+  
+          
+        </Router>
+        
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  state: state
+});
+
+const mapDispatchToProps = dispatch => ({
+
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
