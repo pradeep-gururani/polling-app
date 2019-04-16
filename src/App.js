@@ -5,6 +5,8 @@ import {connect} from 'react-redux';
 import { BrowserRouter as Router} from "react-router-dom";
 import {Switch,Route} from 'react-router-dom';
 import User from './components/User';
+const GETDATA = require("./services/GetData");
+
 class App extends Component {
   render() {
     console.log('props-->in-->app-->', this.props.state);
@@ -16,7 +18,7 @@ class App extends Component {
               <Route exact path = "/User" component = {User}></Route>    
                                  
           </Switch>
-          {(this.props.state.login.data.role === 'user')
+          {(GETDATA('user_id')!==null)
           ?(<User />)
           :(<Auth />)
           }

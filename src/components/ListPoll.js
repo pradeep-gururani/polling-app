@@ -1,27 +1,27 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import {takePollRequest} from '../redux/actions';
 class ListPoll extends Component {
     render() { 
-        console.log('list',this.props.state.listPoll.data.data);
-        
+        // console.log('list',this.props.state.listPoll.data.data);
+        console.log('proplist', this.props);
+        // let pollData = this.props.state.listPoll;
         return (
             <div className = "col-sm-9">
                 <div className="accordion">                                           
                             {this.props.state.listPoll.data.data.map(dat=>(
-                            <div className="card" key ={dat}> 
-                                <div class="card-header" id={dat}>
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <div className="card" > 
+                                <div className="card-header" id={dat._id}>
+                                    <h5 className="mb-0">
+                                        <button className="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                         {dat.title}
                                         </button>
                                     </h5>
-                                </div>
-        
-                                <div id={dat} class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                                    <div class="card-body">
-                                        
+                                </div>        
+                                <div id={dat._id} className="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                    <div className="card-body">                                        
                                        {dat.options.map(opt=>(                                           
-                                           <button className ="btn btn-info" key={opt}>
+                                           <button className ="btn btn-info" key={opt} onClick = {()=>this.props.takePollRequest({'poll_id':dat._id,'option_text':opt.option})}>
                                                 {opt.option}
                                              </button>
                                        ))} 
@@ -31,8 +31,7 @@ class ListPoll extends Component {
 
                             ))
 
-                            }   
-                                                    
+                            }                                                    
 
                 </div>
             </div>
@@ -45,7 +44,7 @@ const mapStateToProps = state => ({
   });
   
   const mapDispatchToProps = dispatch => ({
-
+    takePollRequest: data => dispatch(takePollRequest(data))
   });
   
   export default connect(

@@ -39,10 +39,7 @@ class AddUser extends Component {
                         required
                     />
                     <input type ="submit" className ="btn btn-primary" value = "submit" />
-                </form>
-                <div>
-                    <h3>{this.props.state.signup.message}</h3>
-                </div>
+                </form>                
             </div>
         );
     }

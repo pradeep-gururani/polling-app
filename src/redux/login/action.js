@@ -2,9 +2,12 @@ import axios from 'axios';
 import { put } from 'redux-saga/effects'
 import * as actions from '../actions';
 import jwt_decode from  'jwt-decode';
+import {baseUrl} from '../../config';
+const DATASTORE = require("../../services/DataStore");
+
 export function* loginRequest(action){
     let error = null;
-    let url = `https://secure-refuge-14993.herokuapp.com/login?username=${action.payload.user}&password=${action.payload.passwd}`;
+    let url = `${baseUrl}/login?username=${action.payload.user}&password=${action.payload.passwd}`;
     const res = yield axios.get(url,{
         method: 'GET'
     }).then((res)=>{
@@ -24,7 +27,8 @@ export function* loginRequest(action){
         }else{
             let token = res.data.token;
             let decoded = Object.assign(jwt_decode(token),{'role':'user'}); 
-
+            let localId = {'user_id':decoded.user_id};
+            DATASTORE(localId);//save to local storage
             yield put(actions.loginSuccess({'data':res.data.token,"tok":decoded})); //auth success
         }
     }

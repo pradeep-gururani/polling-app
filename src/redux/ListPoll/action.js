@@ -1,9 +1,10 @@
 import axios from 'axios';
-import { put } from 'redux-saga/effects'
-import * as actions from '../actions'
+import { put } from 'redux-saga/effects';
+import * as actions from '../actions';
+import {baseUrl} from '../../config';
 export function* listPollRequest(action){
     let error = null;
-    let url = `https://secure-refuge-14993.herokuapp.com/list_polls`;
+    let url = `${baseUrl}/list_polls`;
     const res = yield axios.get(url,{
         method: 'POST'
     }).then((res)=>{

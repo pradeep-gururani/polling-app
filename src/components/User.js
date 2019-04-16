@@ -3,10 +3,21 @@ import {Switch, Link, Route} from 'react-router-dom';
 import {connect } from 'react-redux';
 import ListPoll from '../components/ListPoll';
 import UserHome from '../components/UserHome';
-import {listPollRequest} from '../redux/actions';
+import {listPollRequest,logOut} from '../redux/actions';
+
+// const resetState={};
+// import {loginComponent} from './loginComponent';
 class User extends Component {
+    // constructor(props) {
+    //     super(props)
+    //     this.state = resetState;
+    // }
     componentDidMount(){
         this.props.listPollRequest();
+    }
+    logout = (data)=>{
+        console.log('logout---',this.props);
+        // this.setState(resetState);
     }
         
     render() { 
@@ -15,17 +26,17 @@ class User extends Component {
                 <Switch>
                     <Route exact path = "/User/Listpolls" component = {ListPoll}></Route>
                     <Route path = "/User/home" component = {UserHome}></Route>
-                                                            
+                    {/* <Route exact path ="/" component = {loginComponent}></Route>                                                             */}
                 </Switch>
-                {console.log('user',this.props)}    
-                <div className = "row">
+                {console.log('user',this.props)}                    
                     <div className = "col-sm-3">
                         <button className = "btn btn-primary list">
                            <Link to = "/User/Listpolls"> List Polls</Link>
                         </button>
-                    </div>
-                    
-                </div>
+                        <Link to = "/">
+                            <button className = "btn btn-danger logout" onClick ={()=>this.logOut()}>Logout</button>
+                        </Link> 
+                    </div>                                  
             </div>
          );
     }
@@ -36,7 +47,8 @@ const mapStateToProps = state => ({
   });
   
   const mapDispatchToProps = dispatch => ({
-    listPollRequest: data => dispatch(listPollRequest(data))
+    listPollRequest: data => dispatch(listPollRequest(data)),
+    logOut: data =>dispatch(logOut())
   });
   
   export default connect(

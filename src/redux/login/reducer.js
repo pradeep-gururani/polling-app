@@ -1,6 +1,7 @@
 import constants from "../constants";
 import {handleActions} from "redux-actions";
 import update from "immutability-helper";
+import { toast } from 'react-toastify';
 const initialState = {
     isLoading: false,
     isSuccess: false,
@@ -17,15 +18,19 @@ update(state,{
     message : {$set : ""}
 });
 
-const handleLoginSuccess = (state, action) =>
-update(state,{
+const handleLoginSuccess = (state, action) =>{
+toast.success("User Logged In Successfully!");
+return update(state,{
     isLoading: {$set: false},
     isSuccess: {$set: true},
     isError : {$set : false},
     message : {$set : "User Logged In Successfully!"},
-    data:{$set : action.payload.tok}    
-});
+    // data:{$set : action.payload.tok}    
+
+}
+)};
 const handleLoginError = (state, action) => {
+toast.error(action.payload.message);
 return update(state, {
     isLoading: {$set: false},
     isSuccess: {$set: false},
@@ -33,6 +38,7 @@ return update(state, {
     message : {$set : action.payload.message},
     data:{$set : {}}   
 }
+
 )}; 
 
 

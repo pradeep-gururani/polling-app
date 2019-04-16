@@ -1,9 +1,12 @@
 import axios from 'axios';
-import { put } from 'redux-saga/effects'
-import * as actions from '../actions'
+import { put } from 'redux-saga/effects';
+import * as actions from '../actions';
+import { baseUrl } from '../../config';
+
+
 export function* signupRequest(action){
     let error = null;
-    let url = `https://secure-refuge-14993.herokuapp.com/add_user?username=${action.payload.t1}&password=${action.payload.t2}&role=${action.payload.t3}`;
+    let url = `${baseUrl}/add_user?username=${action.payload.t1}&password=${action.payload.t2}&role=${action.payload.t3}`;
     const res = yield axios.get(url,{
         method: 'POST'
     }).then((res)=>{
@@ -20,7 +23,7 @@ export function* signupRequest(action){
     else{
         if(res.data  && res.data.error === 1){            
             yield put(actions.signupError({'message':res.data.message}));
-        }else{            
+        }else{                        
             yield put(actions.signupSuccess({'data':res.data}));
         }
     }
