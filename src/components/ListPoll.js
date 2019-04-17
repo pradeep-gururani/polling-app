@@ -3,9 +3,6 @@ import { connect } from "react-redux";
 import { takePollRequest } from "../redux/actions";
 class ListPoll extends Component {
   render() {
-    // console.log('list',this.props.state.listPoll.data.data);
-    console.log("proplist", this.props);
-    // let pollData = this.props.state.listPoll;
     return (
       <div className="col-sm-9">
         <div className="accordion">

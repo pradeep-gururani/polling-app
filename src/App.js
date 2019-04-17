@@ -8,8 +8,7 @@ import User from './components/User';
 const GETDATA = require("./services/GetData");
 
 class App extends Component {
-  render() {
-    console.log('props-->in-->app-->', this.props.state);
+  render() {  
 
     return (
       <div className="App">             

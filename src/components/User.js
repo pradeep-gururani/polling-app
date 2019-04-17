@@ -16,7 +16,7 @@ class User extends Component {
     this.props.listPollRequest();
   }
   logout = data => {
-    console.log("logout---", this.props);
+    // console.log("logout---", this.props);
     // this.setState(resetState);
   };
 
