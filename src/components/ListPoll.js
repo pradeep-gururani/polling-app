@@ -33,7 +33,7 @@ class ListPoll extends Component {
                 <div className="card-body">
                   {dat.options.map(opt => (
                     <button
-                      className="btn btn-info"
+                      className="btn btn-info mr-1"
                       key={opt}
                       onClick={() =>
                         this.props.takePollRequest({
