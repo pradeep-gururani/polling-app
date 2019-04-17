@@ -25,7 +25,7 @@ return update(state,{
     isSuccess: {$set: true},
     isError : {$set : false},
     message : {$set : "User Logged In Successfully!"},
-    // data:{$set : action.payload.tok}    
+    data:{$set : action.payload.tok}    
 
 }
 )};

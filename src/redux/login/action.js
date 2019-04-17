@@ -1,10 +1,11 @@
 import axios from 'axios';
 import { put } from 'redux-saga/effects'
 import * as actions from '../actions';
-import jwt_decode from  'jwt-decode';
+// import jwt_decode from  'jwt-decode';
 import {baseUrl} from '../../config';
 const DATASTORE = require("../../services/DataStore");
-
+let jwt = require('jwt-simple');
+let secret = "jwt_tok";
 export function* loginRequest(action){
     let error = null;
     let url = `${baseUrl}/login?username=${action.payload.user}&password=${action.payload.passwd}`;
@@ -26,9 +27,9 @@ export function* loginRequest(action){
             yield put(actions.loginError({'message':res.data.data})); //auth failure
         }else{
             let token = res.data.token;
-            let decoded = Object.assign(jwt_decode(token),{'role':'user'}); 
+            let decoded = Object.assign(jwt.decode(token, secret)); 
             let localId = {'user_id':decoded.user_id};
-            DATASTORE(localId);//save to local storage
+            DATASTORE("loginData",localId);//save to local storage
             yield put(actions.loginSuccess({'data':res.data.token,"tok":decoded})); //auth success
         }
     }

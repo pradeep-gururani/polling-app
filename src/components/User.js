@@ -34,7 +34,7 @@ class User extends Component {
                            <Link to = "/User/Listpolls"> List Polls</Link>
                         </button>
                         <Link to = "/">
-                            <button className = "btn btn-danger logout" onClick ={()=>this.logOut()}>Logout</button>
+                            <button className = "btn btn-danger logout" onClick ={()=>this.props.logOut()}>Logout</button>
                         </Link> 
                     </div>                                  
             </div>

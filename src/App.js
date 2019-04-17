@@ -18,7 +18,7 @@ class App extends Component {
               <Route exact path = "/User" component = {User}></Route>    
                                  
           </Switch>
-          {(GETDATA('user_id')!==null)
+          {(GETDATA('loginData')!==null)
           ?(<User />)
           :(<Auth />)
           }
