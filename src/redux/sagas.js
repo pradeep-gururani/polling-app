@@ -29,7 +29,7 @@ function* watchActions() {
   yield takeLatest(constants.TAKE_POLL_REQUEST, takePollRequest);
   yield takeLatest(constants.TAKE_POLL_SUCCESS, takePollSuccess);
   yield takeLatest(constants.TAKE_POLL_ERROR, takePollError);
-  yield takeLatest(constants.LOG_OUT,logOut);
+  yield takeLatest(constants.LOG_OUT, logOut);
 }
 
 export default function* rootSaga() {

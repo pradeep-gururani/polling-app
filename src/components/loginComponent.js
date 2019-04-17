@@ -16,19 +16,21 @@ class LoginComponent extends Component {
     return (
       <div className="form-group">
         <form onSubmit={this.submit}>
-          <h3>Login</h3>
+          <h3 className="mb-3">Login</h3>
           <input
             type="text"
             name="text1"
             ref="user"
-            className="form-control"
+            placeholder="usename"
+            className="form-control mb-3"
             required
           />
           <input
             type="password"
             name="text2"
             ref="passwd"
-            className="form-control"
+            className="form-control mb-3"
+            placeholder="password"
             required
           />
           <input type="submit" className="btn btn-success" value="Login" />

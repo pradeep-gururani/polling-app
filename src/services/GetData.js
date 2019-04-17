@@ -1,5 +1,4 @@
-module.exports = function GetData(getData){
-    console.log('getting data');
+module.exports = function GetData(getData){    
     return(localStorage.getItem(getData));
         
 }   
