@@ -15,6 +15,6 @@ code {
 .list a{
   color: #fff;
 }
-.list,.logout{
+.list,.logout,.btn{
   width: 100%;
 }

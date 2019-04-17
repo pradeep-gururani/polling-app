@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { takePollRequest } from "../redux/actions";
 class ListPoll extends Component {
   render() {
+      console.log('in listpoll');
+      
     return (
       <div className="col-sm-9">
         <div className="accordion">

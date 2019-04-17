@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { loginRequest } from "../redux/actions";
 import { connect } from "react-redux";
-// import { Link } from "react-router-dom";
+import { withRouter} from "react-router-dom";
 class LoginComponent extends Component {
   submit = data => {
     data.preventDefault();
@@ -12,10 +12,19 @@ class LoginComponent extends Component {
     this.props.loginRequest(loginFormVal);
   };
 
+  componentDidUpdate() {
+    if(this.props.inlogin.isSuccess === true){
+      this.props.history.push('/Login');
+    }
+    // console.log('******',this.props.inlogin.isSuccess);
+    
+  }
+
+
   render() {
     return (
       <div className="form-group">
-        <form onSubmit={this.submit}>
+        <form  onSubmit={this.submit}>
           <h3 className="mb-3">Login</h3>
           <input
             type="text"
@@ -32,22 +41,26 @@ class LoginComponent extends Component {
             className="form-control mb-3"
             placeholder="password"
             required
-          />
-          <input type="submit" className="btn btn-success" value="Login" />
+          />         
+         
+              {/* <button  className="btn btn-success">
+                Login
+              </button> */}
+               <input type="submit" className="btn btn-success" value="Login" />          
         </form>
       </div>
     );
   }
 }
 const mapStateToProps = state => ({
-  state: state
+  inlogin: state.login
 });
 
 const mapDispatchToProps = dispatch => ({
   loginRequest: data => dispatch(loginRequest(data))
 });
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(LoginComponent);
+)(LoginComponent));

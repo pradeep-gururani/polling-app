@@ -1,4 +1,4 @@
 module.exports = function GetData(getData){    
-    return(localStorage.getItem(getData));
+    return(JSON.parse(localStorage.getItem(getData)));
         
 }   

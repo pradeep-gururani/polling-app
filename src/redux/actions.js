@@ -14,3 +14,10 @@ export const takePollRequest = createAction(constants.TAKE_POLL_REQUEST);
 export const takePollSuccess = createAction(constants.TAKE_POLL_SUCCESS);
 export const takePollError = createAction(constants.TAKE_POLL_ERROR);
 export const logOut = createAction(constants.LOG_OUT);
+export const addPollRequest = createAction(constants.ADD_POLL_REQUEST);
+export const addPollSuccess = createAction(constants.ADD_POLL_SUCCESS);
+export const addPollError = createAction(constants.ADD_POLL_ERROR);
+export const listUsersRequest = createAction(constants.LIST_USERS_REQUEST);
+export const listUsersSuccess = createAction(constants.LIST_USERS_SUCCESS);
+export const listUsersError = createAction(constants.LIST_USERS_ERROR);
+
