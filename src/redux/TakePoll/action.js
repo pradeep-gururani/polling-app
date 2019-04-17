@@ -3,18 +3,18 @@ import { put } from "redux-saga/effects";
 import * as actions from "../actions";
 import { baseUrl } from "../../config";
 const DATASTORE = require("../../services/DataStore");
-const GETDATA = require("../../services/GetData");
+// const GETDATA = require("../../services/GetData");
 export function* takePollRequest(action) {
   
   let error = null;
   let pollData = [];
-  let voteData = GETDATA('pollData');
+//   let voteData = GETDATA('pollData');
   let validVote = true;
-  if (voteData.includes(action.payload.poll_id)) {
-    validVote = false;
-  } else {
-    validVote = true;
-  }
+//   if (voteData.includes(action.payload.poll_id)) {
+//     validVote = false;
+//   } else {
+//     validVote = true;
+//   }
 
   if (validVote === false) {
     yield put(
