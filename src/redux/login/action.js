@@ -30,6 +30,7 @@ export function* loginRequest(action) {
       yield put(actions.loginError({ message: res.data.data })); //auth failure
     } else {
       let token = res.data.token;
+    //   let role ;
       let decoded = Object.assign(jwt.decode(token, secret));
       let localId = { user_id: decoded.user_id };
       DATASTORE("loginData", localId); //save to local storage

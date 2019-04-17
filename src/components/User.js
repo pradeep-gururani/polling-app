@@ -29,9 +29,11 @@ class User extends Component {
           {/* <Route exact path ="/" component = {loginComponent}></Route>                                                             */}
         </Switch>
         <div className="col-sm-3">
+        <Link to="/User/Listpolls">
           <button className="btn btn-primary list mb-1">
-            <Link to="/User/Listpolls"> List Polls</Link>
+             List Polls
           </button>
+          </Link>
           <Link to="/">
             <button
               className="btn btn-danger logout"
