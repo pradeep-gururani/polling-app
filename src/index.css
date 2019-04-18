@@ -12,3 +12,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.list a{
+  color: #fff;
+}
+.list,.logout,.btn{
+  width: 100%;
+}

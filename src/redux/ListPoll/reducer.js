@@ -1,7 +1,6 @@
 import constants from "../constants";
 import { handleActions } from "redux-actions";
 import update from "immutability-helper";
-import { toast } from "react-toastify";
 const initialState = {
   isLoading: false,
   isSuccess: false,
@@ -10,7 +9,7 @@ const initialState = {
   data: {}
 };
 
-const handleSignupRequest = (state, action) =>
+const handleListPollRequest = (state, action) =>
   update(state, {
     isLoading: { $set: true },
     isSuccess: { $set: false },
@@ -18,31 +17,29 @@ const handleSignupRequest = (state, action) =>
     message: { $set: "" }
   });
 
-const handleSignupSuccess = (state, action) => {
-  toast.success("User Added Successfully!");
-  return update(state, {
+const handleListPollSuccess = (state, action) =>
+  update(state, {
     isLoading: { $set: false },
     isSuccess: { $set: true },
     isError: { $set: false },
-    message: { $set: "User Added Successfully!" }
-    // data:{$set : action.payload.data.data}
+    message: { $set: "successfully got poll data" },
+    data: { $set: action.payload.data }
   });
-};
-const handleSignupError = (state, action) => {
-  toast.error(action.payload.message);
+const handleListPollError = (state, action) => {
   return update(state, {
     isLoading: { $set: false },
     isSuccess: { $set: false },
     isError: { $set: true },
-    message: { $set: action.payload.message }
+    message: { $set: action.payload.message },
+    data: { $set: {} }
   });
 };
 
 export default handleActions(
   {
-    [constants.SIGNUP_REQUEST]: handleSignupRequest,
-    [constants.SIGNUP_SUCCESS]: handleSignupSuccess,
-    [constants.SIGNUP_ERROR]: handleSignupError
+    [constants.LIST_POLL_REQUEST]: handleListPollRequest,
+    [constants.LIST_POLL_SUCCESS]: handleListPollSuccess,
+    [constants.LIST_POLL_ERROR]: handleListPollError
   },
   initialState
 );
