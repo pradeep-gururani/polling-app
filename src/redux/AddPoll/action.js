@@ -5,7 +5,10 @@ import { baseUrl } from "../../config";
 
 export function* addPollRequest(action) {
   let error = null;
-  let url = `${baseUrl}/add_poll?title=${action}&options=${action}`;
+  console.log('actions----==',action.payload);
+//   let options = ;
+  console.log(action.payload.options);
+  let url = `${baseUrl}/add_poll?title=${action.payload.title}&options=${action.payload.options}`;
   const res = yield axios
     .get(url, {
       method: "POST"

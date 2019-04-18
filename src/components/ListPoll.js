@@ -8,7 +8,7 @@ class ListPoll extends Component {
   }
   render() {          
     return (
-      <div className="col-sm-9">
+      <div className="listpoll">
         <div className="accordion">
           {this.props.polldata.data &&
             this.props.polldata.data.map(dat => (
