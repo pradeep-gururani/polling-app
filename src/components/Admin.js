@@ -5,6 +5,7 @@ import AddUser from '../components/AddUser';
 import { logOut } from "../redux/actions";
 import ListUsers from './ListUsers';
 import ListPoll from './ListPoll';
+import AddPoll from  './AddPoll';
 class Admin extends Component {    
     render() { 
         return ( 
@@ -15,6 +16,7 @@ class Admin extends Component {
                  
                 <Switch>
                     <Route path = "/Admin/AddUser" component = {AddUser}></Route>
+                    <Route path = "/Admin/AddPoll" component = {AddPoll}></Route>
                     <Route path = "/Admin/ListUsers" component ={ListUsers}></Route>     
                     <Route path = "/Admin/ListPolls" component ={ListPoll}></Route>                            
                     <Route path="/Admin" render={()=><div>test</div>} />

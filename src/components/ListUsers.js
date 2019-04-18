@@ -8,8 +8,8 @@ class ListUsers extends Component {
   }
   render() {
     return (
-      <div className="col-sm-9">
-        <h3>All Users</h3>
+      <div className="listuser">
+        <h3 className ="mb-3">All Users</h3>
         <ul className="list-group">
           {this.props.userList.data &&
             this.props.userList.data.map(user => (
