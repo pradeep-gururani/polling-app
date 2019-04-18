@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { takePollRequest } from "../redux/actions";
+import { listPollRequest, takePollRequest } from "../redux/actions";
 class ListPoll extends Component {
-  render() {
-      console.log('in listpoll');
-      
+
+  componentDidMount() {
+    this.props.listPollRequest();
+  }
+  render() {          
     return (
       <div className="col-sm-9">
         <div className="accordion">
-          {this.props.state.listPoll.data.data.map(dat => (
+          {this.props.polldata.data &&
+            this.props.polldata.data.map(dat => (
             <div className="card">
               <div className="card-header" id={dat._id}>
                 <h5 className="mb-0">
@@ -32,7 +35,7 @@ class ListPoll extends Component {
                 <div className="card-body">
                   {dat.options.map(opt => (
                     <button
-                      className="btn btn-info mr-1"
+                      className="btn btn-info mr-1 mb-2"
                       key={opt}
                       onClick={() =>
                         this.props.takePollRequest({
@@ -55,11 +58,12 @@ class ListPoll extends Component {
 }
 
 const mapStateToProps = state => ({
-  state: state
+  polldata: state.listPoll.data
 });
 
 const mapDispatchToProps = dispatch => ({
-  takePollRequest: data => dispatch(takePollRequest(data))
+  takePollRequest: data => dispatch(takePollRequest(data)),
+  listPollRequest: data => dispatch(listPollRequest(data))
 });
 
 export default connect(

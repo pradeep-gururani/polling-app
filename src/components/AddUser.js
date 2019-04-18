@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { signupRequest } from "../redux/actions";
 import { connect } from "react-redux";
+const GETDATA = require("../services/GetData");
+let adminId = GETDATA('loginData');
 
 class AddUser extends Component {
   submit = data => {
@@ -17,7 +19,13 @@ class AddUser extends Component {
     return (
       <div className="form-group">
         <form onSubmit={this.submit}>
-          <h3 className="mb-3">Signup</h3>
+         { (adminId !== null)
+          ? (adminId.user_id === '5a0419a09407e50012e97b4b')
+              ? <h3 className="mb-3">Add New User</h3>
+              : <h3 className="mb-3">Signup</h3>            
+            
+          : <h3 className="mb-3">Signup</h3>             
+        }
           <input
             type="text"
             name="text1"

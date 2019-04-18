@@ -2,13 +2,12 @@ import axios from "axios";
 import { put } from "redux-saga/effects";
 import * as actions from "../actions";
 import { baseUrl } from "../../config";
-
-export function* addPollRequest(action) {
+export function* deletePollRequest(action) {
   let error = null;
-  let url = `${baseUrl}/add_poll?title=${action}&options=${action}`;
+  let url = `${baseUrl}/delete_poll?id=${action.payload.poll_id}`;
   const res = yield axios
     .get(url, {
-      method: "POST"
+      method: "GET"
     })
     .then(res => {
       return res;
@@ -19,12 +18,12 @@ export function* addPollRequest(action) {
     });
 
   if (error !== null) {
-    yield put(actions.addPollError({ message: "Error in api request" }));
+    yield put(actions.deletePollError({ message: "Error in api request" }));
   } else {
     if (res.data && res.data.error === 1) {
-      yield put(actions.addPollError({ message: res.data.message }));
+      yield put(actions.deletePollError({ message: res.data.data })); //auth failure
     } else {
-      yield put(actions.addPollSuccess());
+      yield put(actions.deletePollSuccess()); //auth success
     }
   }
 }
