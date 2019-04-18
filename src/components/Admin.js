@@ -4,6 +4,7 @@ import { Switch, Link, Route } from "react-router-dom";
 import AddUser from '../components/AddUser';
 import { logOut } from "../redux/actions";
 import ListUsers from './ListUsers';
+import ListPoll from './ListPoll';
 class Admin extends Component {    
     render() { 
         return ( 
@@ -11,22 +12,25 @@ class Admin extends Component {
             <div className = "admin row">
             
                 <div className = "col-sm-9">
-                    
+                 
                 <Switch>
                     <Route path = "/Admin/AddUser" component = {AddUser}></Route>
-                            <Route path = "/Admin/ListUsers" render = {() => <ListUsers/>}></Route>                            
-                    <Route path="/Admin/" render={()=><div>test</div>} />
+                    <Route path = "/Admin/ListUsers" component ={ListUsers}></Route>     
+                    <Route path = "/Admin/ListPolls" component ={ListPoll}></Route>                            
+                    <Route path="/Admin" render={()=><div>test</div>} />
                         </Switch>
                     
                 </div>
-                <div className="col-sm-3">
+                <div className="col-sm-3 sidebar">
                     <Link to= "/Admin/AddUser">
                         <button className = "btn btn-primary mb-2">
                             Add User
                         </button>                        
                     </Link>
                     <Link to = "/Admin/ListUsers">
-                        <button className = "btn btn-primary mb-2">
+                        <button className = "btn btn-primary mb-2"
+                            
+                        >
                             All Users
                         </button>
                     </Link>

@@ -17,14 +17,13 @@ const handleListUsersRequest = (state, action) =>
     message: { $set: "" }
   });
 
-const handleListUsersSuccess = (state, action) =>
-  update(state, {
-    isLoading: { $set: false },
-    isSuccess: { $set: true },
-    isError: { $set: false },
-    message: { $set: "successfully got users data" },
-    data: { $set: action.payload.data }
-  });
+const handleListUsersSuccess = (state, action) =>{
+  console.log('success');
+ return update(state, {  
+    isSuccess: { $set: true },   
+    data: { $set: action.payload.users }
+}
+)};
 const handleListUsersError = (state, action) => {
   return update(state, {
     isLoading: { $set: false },

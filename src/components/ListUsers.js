@@ -1,32 +1,37 @@
-import React, { Component } from 'react';
-import {connect} from 'react-redux';
-import {listUsersRequest} from '../redux/actions';
-class ListUsers extends Component {    
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { listUsersRequest } from "../redux/actions";
 
-    componentDidMount() {
-        this.props.listUsersRequest();
-    }
-
-    render() { 
-        console.log('user-list',this.props);
-        
-        return (  
-            <div className="col-sm-9">
-                <h1>Users List</h1>
-            </div>
-        );
-    }
+class ListUsers extends Component {
+  componentDidMount() {
+    this.props.listUsersRequest();
+  }
+  render() {
+    return (
+      <div className="col-sm-9">
+        <h3>All Users</h3>
+        <ul className="list-group">
+          {this.props.userList.data &&
+            this.props.userList.data.map(user => (
+              <li key={user._id} className="list-group-item userlist">
+                {user.username}
+              </li>
+            ))}
+        </ul>
+      </div>
+    );
+  }
 }
- 
+
 const mapStateToProps = state => ({
-    userList: state.listUsers
-  });
-  
-  const mapDispatchToProps = dispatch => ({
-    listUsersRequest: data => dispatch(listUsersRequest(data))
-  });
-  
-  export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(ListUsers);
+  userList: state.listUsers.data
+});
+
+const mapDispatchToProps = dispatch => ({
+  listUsersRequest: data => dispatch(listUsersRequest(data))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ListUsers);

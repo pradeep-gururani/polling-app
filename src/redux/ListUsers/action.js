@@ -20,6 +20,6 @@ export function* listUsersRequest(action) {
   if (error !== null) {
     yield put(actions.listUsersError({ message: "Error in api request" }));
   } else {
-    yield put(actions.listUsersSuccess({ data: res.data }));
+    yield put(actions.listUsersSuccess({ users: res.data }));
   }
 }

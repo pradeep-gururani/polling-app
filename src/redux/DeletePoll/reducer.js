@@ -10,7 +10,7 @@ const initialState = {
   data: {}
 };
 
-const handleLoginRequest = (state, action) =>
+const handleDeletePollRequest = (state, action) =>
   update(state, {
     isLoading: { $set: true },
     isSuccess: { $set: false },
@@ -18,18 +18,17 @@ const handleLoginRequest = (state, action) =>
     message: { $set: "" }
   });
 
-const handleLoginSuccess = (state, action) => {
-  // toast.success("User Logged In Successfully!");
-  return update(state, {
+const handleDeletePollSuccess = (state, action) =>{      
+    toast.success("Poll deleted Successfully..!");
+    return update(state, {
     isLoading: { $set: false },
     isSuccess: { $set: true },
     isError: { $set: false },
-    message: { $set: "User Logged In Successfully!" },
-    data: { $set: action.payload.tok }
-  });
-};
-const handleLoginError = (state, action) => {
-  toast.error(action.payload.message);
+    message: { $set: "Poll deleted Successfully..!" },
+}
+)};
+const handleDeletePollError = (state, action) => {
+  toast.error(action.payload.messsage);  
   return update(state, {
     isLoading: { $set: false },
     isSuccess: { $set: false },
@@ -41,9 +40,9 @@ const handleLoginError = (state, action) => {
 
 export default handleActions(
   {
-    [constants.LOGIN_REQUEST]: handleLoginRequest,
-    [constants.LOGIN_SUCCESS]: handleLoginSuccess,
-    [constants.LOGIN_ERROR]: handleLoginError
+    [constants.DELETE_POLL_REQUEST]: handleDeletePollRequest,
+    [constants.DELETE_POLL_SUCCESS]: handleDeletePollSuccess,
+    [constants.DELETE_POLL_ERROR]: handleDeletePollError
   },
   initialState
 );
