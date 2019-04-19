@@ -13,11 +13,13 @@ class User extends Component {
   render() {
     return (
       <div className="container-fluid d-flex">
-        <Switch>
-          <Route exact path="/User/Listpolls" component={ListPoll} />
-          {/* <Route path="/User/home" component={UserHome} /> */}
-          {/* <Route exact path ="/" component = {loginComponent}></Route>                                                             */}
-        </Switch>
+        <div className ="col-sm-9">
+          <Switch>
+            <Route exact path="/User/Listpolls" component={ListPoll} />
+            {/* <Route path="/User/home" component={UserHome} /> */}
+            {/* <Route exact path ="/" component = {loginComponent}></Route>                                                             */}
+          </Switch>
+        </div>
         <div className="col-sm-3 sidebar">
         <Link to="/User/Listpolls">
           <button className="btn btn-primary list mb-1">
