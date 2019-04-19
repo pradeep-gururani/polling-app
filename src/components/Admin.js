@@ -6,6 +6,7 @@ import { logOut } from "../redux/actions";
 import ListUsers from "./ListUsers";
 import ListPoll from "./ListPoll";
 import AddPoll from "./AddPoll";
+import AdminHome from './AdminHome';
 class Admin extends Component {
   render() {
     return (
@@ -17,6 +18,7 @@ class Admin extends Component {
             <Route path="/Admin/ListUsers" component={ListUsers} />
             <Route path="/Admin/ListPolls" component={ListPoll} />
             <Route path="/Admin" render={() => <div>test</div>} />
+            <Route path="/" component={AdminHome} />
           </Switch>
         </div>
         <div className="col-sm-3 sidebar">

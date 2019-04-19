@@ -3,15 +3,8 @@ import AddUser from "../components/AddUser";
 import LoginComponent from "../components/loginComponent";
 import { connect } from "react-redux";
 class Auth extends Component {
-  componentDidMount() {
-    // if(true){
-    //   this.props.history.goBack()
-    // }
-  }
-  
-  render() {
-    console.log("in auth", this.props);
 
+  render() {
     return (
       <div className="row auth">
         <div className="col-sm-6">

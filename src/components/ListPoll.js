@@ -90,7 +90,7 @@ class ListPoll extends Component {
                           <div className="b-edit">
                             <button
                               type="button"
-                              className="btn btn-info"
+                              className="btn btn-info mr-1"
                               onClick={() => this._toggleEdit(dat._id)}
                             >
                               Edit
