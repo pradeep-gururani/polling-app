@@ -7,6 +7,7 @@ import logout from './logout/reducer';
 import listUsers from './ListUsers/reducer';
 import addPoll from './AddPoll/reducer';
 import deletePoll from './DeletePoll/reducer';
+import deletePollOption from './DeletePollOption/reducer';
 const rootReducer = combineReducers({
     signup,
     login,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
     listUsers,
     addPoll,
     deletePoll,
+    deletePollOption,
 });
 
 export default rootReducer;

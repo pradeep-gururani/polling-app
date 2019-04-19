@@ -16,7 +16,9 @@ import {
   deletePollSuccess,
   deletePollError,
   addPollSuccess,
-  addPollError
+  addPollError,
+  deletePollOptionSuccess,
+  deletePollOptionError
 } from "./actions";
 import { loginRequest } from "./login/action";
 import { listPollRequest } from "./ListPoll/action";
@@ -24,6 +26,7 @@ import { takePollRequest } from "./TakePoll/action";
 import {listUsersRequest} from './ListUsers/action';
 import {deletePollRequest} from './DeletePoll/action';
 import { addPollRequest } from "./AddPoll/action";
+import {deletePollOptionRequest} from './DeletePollOption/action';
 function* watchActions() {
   yield takeLatest(constants.SIGNUP_REQUEST, signupRequest);//signup
   yield takeLatest(constants.SIGNUP_SUCCESS, signupSuccess);
@@ -47,6 +50,11 @@ function* watchActions() {
   yield takeLatest(constants.LIST_USERS_REQUEST,listUsersRequest);//list users
   yield takeLatest(constants.LIST_USERS_SUCCESS,listUsersSuccess);
   yield takeLatest(constants.LIST_USERS_ERROR,listUsersError);
+  yield takeLatest(constants.DELETE_POLL_OPTION_REQUEST,deletePollOptionRequest);//delete poll option
+  yield takeLatest(constants.DELETE_POLL_OPTION_SUCCESS,deletePollOptionSuccess);
+  yield takeLatest(constants.DELETE_POLL_OPTION_ERROR,deletePollOptionError);
+  
+
 
 
 }
