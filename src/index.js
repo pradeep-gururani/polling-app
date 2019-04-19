@@ -18,6 +18,6 @@ ReactDOM.render(
     </Router>
   </Provider>,
   document.getElementById("root")
-);
+);  
 
 serviceWorker.unregister();

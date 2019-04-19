@@ -14,7 +14,7 @@ class App extends Component {
       <div className="App">             
        
           <Switch>
-              <Route path = "/User" component = {User}></Route>    
+              <Route path = "/User" component = {(loggedIn!==null)?User:Login}></Route>    
               <Route path = "/Admin" component = {Admin}></Route>
               <Route path = "/Login" component = {Login}></Route>                                                                                                
               <Route  path = "/" component = {(loggedIn!==null)?Login:Auth}></Route>                

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { loginRequest } from "../redux/actions";
 import { connect } from "react-redux";
 import { withRouter} from "react-router-dom";
+let clickCount = 0;
 class LoginComponent extends Component {
   submit = data => {
     data.preventDefault();
@@ -16,12 +17,12 @@ class LoginComponent extends Component {
     if(this.props.inlogin.isSuccess === true){
       this.props.history.push('/Login');
     }
-    // console.log('******',this.props.inlogin.isSuccess);
     
   }
 
 
   render() {
+
     return (
       <div className="form-group">
         <form  onSubmit={this.submit}>
@@ -42,11 +43,21 @@ class LoginComponent extends Component {
             placeholder="password"
             required
           />         
-         
-              {/* <button  className="btn btn-success">
-                Login
-              </button> */}
-               <input type="submit" className="btn btn-success" value="Login" />          
+               { (this.props.inlogin.isLoading === false)
+               ?
+               <input type="submit" className="btn btn-success" value="Login"  disabled = {(clickCount>=1)?true:false}
+                onClick={()=>{
+                  // clickCount++;
+                  //   if((this.props.inlogin.isLoading === false)||(this.props.inlogin.isError === true)){
+                  //     clickCount = 0;
+                  //   }
+                  }     
+                } />  
+                :<button className="buttonload btn btn-success" disabled={true}>
+                  <i className="fa fa-spinner fa-spin"></i>Loading
+                </button>
+              
+              }       
         </form>
       </div>
     );
