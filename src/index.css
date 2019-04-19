@@ -35,6 +35,9 @@ code {
 .poll-opt{
   width: 60%;
 }
+.login{
+  width: 50%;
+}
 .poll-opt input[type="text"]{
   width: 100%;
 }
