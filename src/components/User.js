@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Switch, Link, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import ListPoll from "../components/ListPoll";
-// import UserHome from "../components/UserHome";
+import UserHome from "../components/UserHome";
 import { logOut } from "../redux/actions";
 
 // const resetState={};
@@ -16,7 +16,7 @@ class User extends Component {
         <div className ="col-sm-9">
           <Switch>
             <Route exact path="/User/Listpolls" component={ListPoll} />
-            {/* <Route path="/User/home" component={UserHome} /> */}
+            <Route path="/" component={UserHome} />
             {/* <Route exact path ="/" component = {loginComponent}></Route>                                                             */}
           </Switch>
         </div>

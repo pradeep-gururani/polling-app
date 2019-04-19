@@ -4,10 +4,12 @@ class UserHome extends Component {
   render() {
     return (
       <div>
-        <p>Welcome User</p>
+            <div className="alert alert-success" role="alert">
+              <h2 className="alert-heading">Welcome User!</h2>              
+            </div>
       </div>
-    );
-  }
+        );
+      }
 }
 
 const mapStateToProps = state => ({

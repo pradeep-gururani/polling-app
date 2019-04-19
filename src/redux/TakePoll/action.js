@@ -20,12 +20,7 @@ export function* takePollRequest(action) {
     yield put(
       actions.takePollError({ message: "You have already given this poll..!" })
     );
-  } else {
-    console.log(
-        "action---Poll",
-        action.payload.poll_id,
-        action.payload.option_text
-      );
+  } else {    
     let url = `${baseUrl}/do_vote?id=${action.payload.poll_id}&option_text=${
       action.payload.option_text
     }`;
@@ -42,8 +37,7 @@ export function* takePollRequest(action) {
       });
 
     if (error !== null) {
-      yield put(actions.takePollError({ message: "Error in api request" })); // error in api fire
-      console.log("error is--->", error);
+      yield put(actions.takePollError({ message: "Error in api request" })); // error in api fire      
     } else {
       if (res.data && res.data.error === 1) {
         yield put(actions.takePollError({ message: res.data.error })); //poll failure

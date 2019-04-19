@@ -31,8 +31,7 @@ const handleTakePollSuccess = (state, action) => {
 };
 
 const handleTakePollError = (state, action) => {
-  toast.error(action.payload.message);
-  console.log("pollerrror", action.payload.message);
+  toast.error(action.payload.message);  
   return update(state, {
     isLoading: { $set: false },
     isSuccess: { $set: false },

@@ -8,6 +8,7 @@ import listUsers from './ListUsers/reducer';
 import addPoll from './AddPoll/reducer';
 import deletePoll from './DeletePoll/reducer';
 import deletePollOption from './DeletePollOption/reducer';
+import editPollTitle from './EditPollTitle/reducer';
 const rootReducer = combineReducers({
     signup,
     login,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
     addPoll,
     deletePoll,
     deletePollOption,
+    editPollTitle,
 });
 
 export default rootReducer;

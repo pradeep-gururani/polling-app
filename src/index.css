@@ -44,3 +44,27 @@ code {
 .opt-actions .btn {
   width: 80%;
 }
+.listpoll h5 .btn-group{
+  width: 30%;
+}
+.listpoll .b-link{
+  width: 80%;
+  display: inline-block;
+}
+.listpoll h5{
+  display: flex;
+}
+.listpoll h5 .btn-group {
+  width: 30%;
+  display: inline-flex;
+}
+.b-edit{
+  display: flex;  
+}
+.editform{
+  display: inline-block;
+  width: 68%;
+}
+.editform .edit-poll{
+  width: 30%;
+}

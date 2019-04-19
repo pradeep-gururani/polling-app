@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { signupRequest } from "../redux/actions";
 import { connect } from "react-redux";
+import { select } from "redux-saga/effects";
+import { withRouter} from "react-router-dom";
 const GETDATA = require("../services/GetData");
-let adminId = GETDATA('loginData');
-
 class AddUser extends Component {
   submit = data => {
     data.preventDefault();
@@ -14,10 +14,17 @@ class AddUser extends Component {
     };
     this.props.signupRequest(formVal);
   };
-
+  componentDidUpdate() {
+    if(this.props.signup.isSuccess === true){
+      this.props.history.push('/Admin/ListUsers');
+    }
+    
+  }
   render() {
+    console.log('sognup',this.props.signup.isSuccess);
+    let adminId = GETDATA('loginData');
     return (
-      <div className="form-group">
+      <div className="form-group add-user">
         <form onSubmit={this.submit}>
          { (adminId !== null)
           ? (adminId.user_id === '5a0419a09407e50012e97b4b')
@@ -42,14 +49,18 @@ class AddUser extends Component {
             placeholder="password"
             required
           />
-          <input
+          {/* <input
             type="text"
             name="text3"
             ref="t3"
             className="form-control mb-3"
             placeholder="role"
             required
-          />
+          /> */}
+          <select ref="t3" required className="custom-select mb-5">
+            <option>Admin</option>
+            <option>User</option>
+          </select>
           <input type="submit" className="btn btn-primary" value="submit" />
         </form>
       </div>
@@ -58,14 +69,14 @@ class AddUser extends Component {
 }
 
 const mapStateToProps = state => ({
-  state: state
+  signup: state.signup
 });
 
 const mapDispatchToProps = dispatch => ({
   signupRequest: data => dispatch(signupRequest(data))
 });
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(AddUser);
+)(AddUser));

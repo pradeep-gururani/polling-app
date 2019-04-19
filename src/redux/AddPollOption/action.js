@@ -5,7 +5,6 @@ import { baseUrl } from "../../config";
 
 export function* addPollOptionRequest(action) {
   let error = null;
-  console.log('actions----==',action.payload);
   let url = `${baseUrl}/add_new_option?id=${action.payload.pollId}&option_text=${action.payload.option}`;  
   const res = yield axios
     .get(url, {

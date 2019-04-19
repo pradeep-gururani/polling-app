@@ -17,8 +17,7 @@ const handleListUsersRequest = (state, action) =>
     message: { $set: "" }
   });
 
-const handleListUsersSuccess = (state, action) =>{
-  console.log('success');
+const handleListUsersSuccess = (state, action) =>{  
  return update(state, {  
     isSuccess: { $set: true },   
     data: { $set: action.payload.users }
