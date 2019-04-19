@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addPollRequest } from "../redux/actions";
+import { withRouter} from "react-router-dom";
 class AddPoll extends Component {
   addpoll = data => {
     data.preventDefault();
@@ -15,6 +16,12 @@ class AddPoll extends Component {
 
     this.props.addPollRequest(newPoll);
   };
+  componentDidUpdate() {
+    if(this.props.addPoll.isSuccess === true){
+      this.props.history.push('/Admin/ListPolls');
+    }
+    
+  }
 
   render() {
     return (
@@ -69,14 +76,14 @@ class AddPoll extends Component {
 }
 
 const mapStateToProps = state => ({
-  addedpoll: state.addpoll
+  addPoll: state.addPoll
 });
 
 const mapDispatchToProps = dispatch => ({
   addPollRequest: data => dispatch(addPollRequest(data))
 });
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(AddPoll);
+)(AddPoll));
