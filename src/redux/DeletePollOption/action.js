@@ -2,11 +2,9 @@ import axios from "axios";
 import { put } from "redux-saga/effects";
 import * as actions from "../actions";
 import { baseUrl } from "../../config";
-export function* deletePollOptionRequest(action) {
-    console.log('poll-id',action.payload.pollId, action.payload.text);
+export function* deletePollOptionRequest(action) {    
   let error = null;
   let url = `${baseUrl}/delete_poll_option?id=${action.payload.pollId}&option_text=${action.payload.text}`;
-  // let url ='';
   const res = yield axios
     .get(url, {
       method: "POST"

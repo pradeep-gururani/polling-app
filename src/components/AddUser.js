@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { signupRequest } from "../redux/actions";
 import { connect } from "react-redux";
 const GETDATA = require("../services/GetData");
-let adminId = GETDATA('loginData');
-
 class AddUser extends Component {
   submit = data => {
     data.preventDefault();
@@ -16,6 +14,7 @@ class AddUser extends Component {
   };
 
   render() {
+    let adminId = GETDATA('loginData');
     return (
       <div className="form-group">
         <form onSubmit={this.submit}>

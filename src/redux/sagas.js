@@ -20,7 +20,9 @@ import {
   deletePollOptionSuccess,
   deletePollOptionError,
   addPollOptionSuccess,
-  addPollOptionError
+  addPollOptionError,
+  editPollTitleSuccess,
+  editPollTitleError
 } from "./actions";
 import { loginRequest } from "./login/action";
 import { listPollRequest } from "./ListPoll/action";
@@ -30,6 +32,7 @@ import {deletePollRequest} from './DeletePoll/action';
 import { addPollRequest } from "./AddPoll/action";
 import {deletePollOptionRequest} from './DeletePollOption/action';
 import {addPollOptionRequest} from './AddPollOption/action';
+import {editPollTitleRequest} from './EditPollTitle/action';
 function* watchActions() {
   yield takeLatest(constants.SIGNUP_REQUEST, signupRequest);//signup
   yield takeLatest(constants.SIGNUP_SUCCESS, signupSuccess);
@@ -59,6 +62,9 @@ function* watchActions() {
   yield takeLatest(constants.ADD_POLL_OPTION_REQUEST,addPollOptionRequest);//add poll option request
   yield takeLatest(constants.ADD_POLL_OPTION_SUCCESS,addPollOptionSuccess);
   yield takeLatest(constants.ADD_POLL_OPTION_ERROR,addPollOptionError);
+  yield takeLatest(constants.EDIT_POLL_TITLE_REQUEST,editPollTitleRequest);     //edit poll title 
+  yield takeLatest(constants.EDIT_POLL_TITLE_SUCCESS,editPollTitleSuccess);
+  yield takeLatest(constants.EDIT_POLL_TITLE_ERROR,editPollTitleError);
 
 }
 
