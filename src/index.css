@@ -27,3 +27,20 @@ code {
   right: 0;
   top: 10px;
 }
+.add-opt{
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ebebeb;
+}
+.poll-opt{
+  width: 60%;
+}
+.poll-opt input[type="text"]{
+  width: 100%;
+}
+.add-opt .btn{
+  width: 24%;  
+}
+.opt-actions .btn {
+  width: 80%;
+}
