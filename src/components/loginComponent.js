@@ -41,7 +41,7 @@ class LoginComponent extends Component {
             ref="passwd"
             className="form-control mb-3"
             placeholder="password"
-            required
+            required      
           />         
                { (this.props.inlogin.isLoading === false)
                ?
