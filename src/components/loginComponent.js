@@ -54,7 +54,7 @@ class LoginComponent extends Component {
                   }     
                 } />  
                 :<button className="buttonload btn btn-success" disabled={true}>
-                  <i className="fa fa-spinner fa-spin"></i>Loading
+                  <i className="fa fa-spinner fa-spin"></i>
                 </button>
               
               }       

@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 import './App.css';
 import {connect} from 'react-redux';
-import {Switch,Route} from 'react-router-dom';
+import {Switch,Route,withRouter} from 'react-router-dom';
 import User from './components/User';
 import Admin from './components/Admin';
 import Login from './components/Login';
 import Auth from './containers/Auth';
 const GETDATA = require("./services/GetData");
 class App extends Component {
+
+  componentDidMount() {
+    let isLoggedIn = GETDATA('loginData');
+      if(isLoggedIn === null){
+        this.props.history.push('/');
+      }          
+  }
+  
   render() {  
     let loggedIn = GETDATA('loginData');
     return (
@@ -32,7 +40,7 @@ const mapDispatchToProps = dispatch => ({
 
 });
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(App);
+)(App));
